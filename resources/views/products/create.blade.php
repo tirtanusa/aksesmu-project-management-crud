@@ -6,7 +6,7 @@
     <!-- Header -->
     <div class="mb-6 flex justify-between">
         <h1 class="text-2xl font-bold text-gray-800">Tambah Produk</h1>
-        <a href="{{ route('products.index') }}" class="flex gap-1 text-sm text-gray-700 hover:text-underline-offset-2 items-center">
+        <a href="{{ route('products.index') }}" class="flex gap-1 text-sm text-gray-700 hover:underline hover:underline-offset-3 items-center">
             <x-heroicon-o-arrow-left class="w-5 h-5"/>
             <p class="hidden sm:flex">
                 Kembali ke Halaman Produk
