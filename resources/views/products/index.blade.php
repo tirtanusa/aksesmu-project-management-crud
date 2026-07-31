@@ -11,22 +11,31 @@
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Produk</h1>
         <a href="{{ route('products.create') }}"
-           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-full">
+           class="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-full">
             + Tambah Produk
         </a>
     </div>
 
+    @if (session('success'))
+            <div class="mb-4 rounded-md bg-green-50 border border-green-200 text-green-800 px-4 py-3">
+                {{ session('success') }}
+            </div>
+    @endif
+
     <div class="relative w-1/3 mb-6 flex items-center w-full justify-between">
         <div class="flex">
-            <div class="flex items-center hover:bg-blue-600 hover:text-white rounded-lg py-2 px-4 gap-2 cursor-pointer text-sm">
-                All
-            </div>
-            <div class="flex items-center hover:bg-blue-600 hover:text-white rounded-lg py-2 px-4 gap-2 cursor-pointer text-sm">
-                In Stock
-            </div>
-            <div class="flex items-center hover:bg-blue-600 hover:text-white rounded-lg py-2 px-4 gap-2 cursor-pointer text-sm">
-                Out of Stock
-            </div>
+            <a href="{{ route('products.index', ['status' => 'all']) }}"
+            class="text-sm flex items-center rounded-lg py-2 px-4 gap-2 text-sm {{ $status === 'all' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-white' }}">
+                Semua
+            </a>
+            <a href="{{ route('products.index', ['status' => 'in_stock']) }}"
+            class="text-sm flex items-center rounded-lg py-2 px-4 gap-2 text-sm {{ $status === 'in_stock' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-white' }}">
+                Tersedia
+            </a>
+            <a href="{{ route('products.index', ['status' => 'out_of_stock']) }}"
+            class="text-sm flex items-center rounded-lg py-2 px-4 gap-2 text-sm {{ $status === 'out_of_stock' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-white' }}">
+                Habis
+            </a>
         </div>
         <div class="flex items-center gap-2">
             <div class= "flex items-center bg-white border border-gray-300 rounded-lg py-2 px-4 gap-2">
@@ -37,7 +46,7 @@
         </div>
     </div>
 
-    <div class="bg-white shadow rounded-lg">
+    <div class="bg-white shadow rounded-lg overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>

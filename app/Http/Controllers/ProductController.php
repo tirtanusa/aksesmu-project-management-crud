@@ -7,16 +7,25 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        $products = Product::paginate(10);
-        return view('products.index', compact('products'));
+        $status = $request->query('status', 'all');
+
+        $products = Product::query()
+            ->when($status === 'in_stock', fn ($query) => $query->where('stock', '>', 0))
+            ->when($status === 'out_of_stock', fn ($query) => $query->where('stock', '=', 0))
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('products.index', compact('products', 'status'));
     }
 
     public function create(){
