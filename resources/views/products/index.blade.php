@@ -11,9 +11,15 @@
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Produk</h1>
         <a href="{{ route('products.create') }}"
-           class="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-full items-center">
+           class="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-lg items-center">
             + Tambah Produk
         </a>
+
+        <a href="{{ route('products.create') }}"
+           class="block sm:hidden bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 text-sm font-medium rounded-lg items-center">
+            <x-lucide-plus class="w-5 h-5"/>
+        </a>
+
     </div>
 
     @if (session('success'))
@@ -23,7 +29,7 @@
     @endif
 
     <div class="relative w-1/3 mb-6 flex items-center w-full justify-between">
-        <div class="flex gap-3">
+        <div class="hidden sm:flex gap-3">
             <a href="{{ route('products.index', ['status' => 'all']) }}"
             class="text-sm flex items-center rounded-lg py-2 px-4 gap-2 text-sm {{ $status === 'all' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-white' }}">
                 Semua
@@ -37,6 +43,20 @@
                 Habis
             </a>
         </div>
+        <div class="block sm:hidden">
+            <form action="{{ route('products.index') }}" method="GET">
+                <input type="hidden" name="search" value="{{ request('search') }}">
+
+                <select name="status" id="filter"
+                        onchange="this.form.submit()"
+                        class="w-full rounded-md border border-gray-500 shadow-sm py-2 px-4">
+                    <option value="all" {{ $status === 'all' ? 'selected' : '' }}>Semua</option>
+                    <option value="in_stock" {{ $status === 'in_stock' ? 'selected' : '' }}>Tersedia</option>
+                    <option value="out_of_stock" {{ $status === 'out_of_stock' ? 'selected' : '' }}>Habis</option>
+                </select>
+            </form>
+        </div>
+
         <div class="flex items-center gap-2">
             <form action="{{ route('products.index') }}" method="GET" class="flex items-center gap-2">
                 <input type="hidden" name="status" value="{{ $status }}">
