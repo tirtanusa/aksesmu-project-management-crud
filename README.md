@@ -33,7 +33,7 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek di komputer lokal An
 ### 1. Klon Repositori (Clone Repository)
 Jika Anda mengunduh proyek ini melalui Git, jalankan perintah berikut:
 ```bash
-git clone <url-repository>
+git clone https://github.com/tirtanusa/aksesmu-project-management-crud.git
 cd product-management
 ```
 *(Lewati langkah ini jika Anda sudah berada di dalam folder proyek)*
@@ -61,7 +61,6 @@ copy .env.example .env
 ```
 
 ### 5. Generate Application Key
-Jalankan perintah ini untuk membuat key aplikasi Laravel yang unik:
 ```bash
 php artisan key:generate
 ```
