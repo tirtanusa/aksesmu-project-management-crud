@@ -12,6 +12,7 @@
         "php": "^8.3",
         "blade-ui-kit/blade-heroicons": "*",
         "blade-ui-kit/blade-icons": "*",
+        "codeat3/blade-pixelarticons": "*",
         "davidhsianturi/blade-bootstrap-icons": "*",
         "hasnayeen/blade-eva-icons": "*",
         "laravel/framework": "^13.8",

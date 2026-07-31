@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Monitor LED 24 Inch',
                 'description' => 'Monitor Full HD 1920x1080, refresh rate 75Hz, cocok untuk kerja dan hiburan.',
                 'price' => 1650000,
-                'stock' => 10,
+                'stock' => 0,
             ],
             [
                 'name' => 'Headset Gaming Stereo',
