@@ -4,8 +4,15 @@
 
 @section('content')
 
-    <div class="mb-6">
+    <div class="mb-6 flex justify-between">
         <h1 class="text-2xl font-bold text-gray-800">Tambah Produk</h1>
+        <a href="{{ route('products.index') }}" class="flex gap-1 text-sm text-gray-700 hover:text-underline-offset-2 items-center">
+            <x-heroicon-o-arrow-left class="w-5 h-5"/>
+            <p class="hidden sm:flex">
+                Kembali ke Halaman Produk
+            </p>
+            
+        </a>
     </div>
 
     <div class="bg-white shadow rounded-lg p-6">
@@ -17,9 +24,9 @@
                     Nama Produk
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name') }}"
-                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror">
+                       class="w-full px-2 py-1 rounded-md border border-gray-700 shadow-sm @error('name') border-red-500 @enderror">
                 @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-600 ">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -28,7 +35,7 @@
                     Deskripsi <span class="text-gray-400">(opsional)</span>
                 </label>
                 <textarea name="description" id="description" rows="3"
-                          class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+                          class="w-full px-2 py-1 rounded-md border border-gray-700 shadow-sm @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
@@ -39,7 +46,7 @@
                     Harga
                 </label>
                 <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}"
-                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('price') border-red-500 @enderror">
+                       class="w-full px-2 py-1 border rounded-md border-gray-700 shadow-sm @error('price') border-red-500 @enderror">
                 @error('price')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
@@ -50,7 +57,7 @@
                     Stok
                 </label>
                 <input type="number" name="stock" id="stock" value="{{ old('stock', 0) }}"
-                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 @error('stock') border-red-500 @enderror">
+                       class="w-full px-2 py-1 rounded-md border border-gray-700 shadow-sm @error('stock') border-red-500 @enderror">
                 @error('stock')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
