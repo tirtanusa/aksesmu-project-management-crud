@@ -7,7 +7,7 @@
 <div>
     
 </div>
-
+    <!-- Header -->
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Produk</h1>
         <a href="{{ route('products.create') }}"
@@ -27,7 +27,8 @@
                 {{ session('success') }}
             </div>
     @endif
-
+    <!-- Header -->
+    <!-- Filter dan Search -->
     <div class="relative w-1/3 mb-6 flex items-center w-full justify-between">
         <div class="hidden sm:flex gap-3">
             <a href="{{ route('products.index', ['status' => 'all']) }}"
@@ -71,7 +72,9 @@
             </form>
         </div>
     </div>
+    <!-- Filter dan Search -->
 
+    <!-- Table -->
     <div class="bg-white shadow rounded-lg overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
@@ -147,9 +150,11 @@
             </tbody>
         </table>
     </div>
-
+    <!-- Table -->
+    <!-- Pagination -->
     <div class="mt-6">
         {{ $products->links() }}
     </div>
+    <!-- Pagination -->
 
 @endsection

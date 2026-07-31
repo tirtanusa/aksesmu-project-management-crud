@@ -1,58 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Product Management App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web sederhana untuk manajemen produk yang dibangun menggunakan framework **Laravel** dan didesain dengan **Tailwind CSS**. Aplikasi ini memiliki fitur CRUD lengkap (Create, Read, Update, Delete) serta fitur pencarian dan penyaringan (filter) stok produk.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **CRUD Produk**: Tambah, lihat detail, edit, dan hapus produk.
+- **Pencarian Produk**: Mencari produk berdasarkan nama.
+- **Filter Stok**: Memfilter produk berdasarkan status stok:
+  - **Semua**: Menampilkan semua produk.
+  - **Tersedia**: Menampilkan produk dengan stok > 0.
+  - **Habis**: Menampilkan produk dengan stok = 0 (disertai indikator peringatan visual).
+- **Pagination**: Pembagian halaman otomatis untuk daftar produk.
+- **Responsive Design**: Antarmuka yang ramah pengguna baik di tampilan desktop maupun perangkat seluler.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Prasyarat (Prerequisites)
 
-## Learning Laravel
+Sebelum menjalankan proyek ini, pastikan Anda telah memasang:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **PHP** (minimal versi 8.1)
+- **Composer**
+- **Node.js & NPM**
+- **Database** (MySQL / SQLite / PostgreSQL)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Langkah Instalasi & Cara Menjalankan
 
-## Agentic Development
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek di komputer lokal Anda:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
+### 1. Klon Repositori (Clone Repository)
+Jika Anda mengunduh proyek ini melalui Git, jalankan perintah berikut:
 ```bash
-composer require laravel/boost --dev
+git clone <url-repository>
+cd product-management
+```
+*(Lewati langkah ini jika Anda sudah berada di dalam folder proyek)*
 
-php artisan boost:install
+### 2. Instal Dependensi Composer (PHP)
+Instal paket-paket PHP yang dibutuhkan oleh Laravel:
+```bash
+composer install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Instal Dependensi NPM (Frontend)
+Instal paket-paket JavaScript dan aset CSS untuk Tailwind:
+```bash
+npm install
+```
 
-## Contributing
+### 4. Salin File Konfigurasi Lingkungan (.env)
+Salin berkas konfigurasi template `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+*Catatan untuk pengguna Windows (Command Prompt/PowerShell):*
+```powershell
+copy .env.example .env
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 5. Generate Application Key
+Jalankan perintah ini untuk membuat key aplikasi Laravel yang unik:
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+### 6. Konfigurasi Database
+Buka file `.env` di editor teks Anda dan sesuaikan konfigurasi database berikut dengan server database lokal Anda:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_anda
+DB_USERNAME=root
+DB_PASSWORD=
+```
+*Pastikan Anda sudah membuat database kosong dengan nama yang sesuai di MySQL/DBMS Anda.*
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 7. Jalankan Migrasi Database
+Jalankan perintah migrasi untuk membuat tabel produk di database:
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+### 8. Jalankan Server Pengembangan (Dev Servers)
+Untuk menjalankan aplikasi secara lokal, Anda harus menjalankan server PHP Artisan dan build tool NPM secara bersamaan.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Buka terminal pertama untuk menjalankan **Laravel Development Server**:
+```bash
+php artisan serve
+```
+Aplikasi Anda sekarang dapat diakses di [http://localhost:8000](http://localhost:8000).
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Buka terminal kedua untuk menjalankan **Vite (Compiler Tailwind CSS)**:
+```bash
+npm run dev
+```
+*(Biarkan kedua terminal ini tetap berjalan selama Anda mengembangkan atau menggunakan aplikasi)*

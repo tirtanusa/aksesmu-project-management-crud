@@ -3,7 +3,7 @@
 @section('title', 'Edit Produk')
 
 @section('content')
-
+    <!-- Header -->
     <div class="mb-6 flex justify-between">
         <h1 class="text-2xl font-bold text-gray-800">Edit Produk</h1>
         <a href="{{ route('products.index') }}" class="flex gap-1 text-sm text-gray-700 items-center hover:underline hover:underline-offset-3">
@@ -13,7 +13,9 @@
             </p>
         </a>
     </div>
+    <!-- Header -->
 
+    <!-- Form -->
     <div class="bg-white shadow rounded-lg p-6">
         <form action="{{ route('products.update', $product) }}" method="POST">
             @csrf
@@ -75,5 +77,6 @@
             </div>
         </form>
     </div>
+    <!-- Form -->
 
 @endsection
