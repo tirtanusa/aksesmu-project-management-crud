@@ -11,7 +11,7 @@
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Produk</h1>
         <a href="{{ route('products.create') }}"
-           class="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-full">
+           class="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-full items-center">
             + Tambah Produk
         </a>
     </div>
@@ -23,7 +23,7 @@
     @endif
 
     <div class="relative w-1/3 mb-6 flex items-center w-full justify-between">
-        <div class="flex">
+        <div class="flex gap-3">
             <a href="{{ route('products.index', ['status' => 'all']) }}"
             class="text-sm flex items-center rounded-lg py-2 px-4 gap-2 text-sm {{ $status === 'all' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-white' }}">
                 Semua
@@ -38,11 +38,17 @@
             </a>
         </div>
         <div class="flex items-center gap-2">
-            <div class= "flex items-center bg-white border border-gray-300 rounded-lg py-2 px-4 gap-2">
-                        <x-eva-search class="w-6 h-6"/>
-                        <input type="search" name="search" id="search" placeholder="Cari Produk..."
-                        class="w-full focus: border-white">
-            </div>
+            <form action="{{ route('products.index') }}" method="GET" class="flex items-center gap-2">
+                <input type="hidden" name="status" value="{{ $status }}">
+
+                <div class="flex items-center bg-white border border-gray-300 rounded-lg py-2 px-4 gap-2">
+                    <x-eva-search class="w-6 h-6"/>
+                    <input type="search" name="search" id="search"
+                        value="{{ request('search') }}"
+                        placeholder="Cari Produk..."
+                        class="w-full focus:outline-none">
+                </div>
+            </form>
         </div>
     </div>
 
@@ -75,9 +81,9 @@
                             </td>
                         @elseif ($product->stock == 0)
                             <td class="px-6 py-4 text-sm text-right text-red-500">
-                                <div class="flex items-center justify-end gap-2">
-                                    <x-pixelarticons-warning-box class="w-5 h-5" />
+                                <div class="flex items-center gap-1">
                                     {{ $product->stock }}
+                                    <x-pixelarticons-warning-box class="w-5 h-5" />
                                 </div>
                             </td>
                         @else

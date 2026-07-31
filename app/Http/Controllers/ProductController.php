@@ -17,10 +17,12 @@ class ProductController extends Controller
     public function index(Request $request): View
     {
         $status = $request->query('status', 'all');
+        $search = $request->query('search');
 
         $products = Product::query()
             ->when($status === 'in_stock', fn ($query) => $query->where('stock', '>', 0))
             ->when($status === 'out_of_stock', fn ($query) => $query->where('stock', '=', 0))
+            ->when($search, fn ($query) => $query->where('name', 'like', "%{$search}%"))
             ->latest()
             ->paginate(10)
             ->withQueryString();
