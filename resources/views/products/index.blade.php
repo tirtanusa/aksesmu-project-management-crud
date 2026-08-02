@@ -75,7 +75,7 @@
     <!-- Filter dan Search -->
 
     <!-- Table -->
-    <div class="bg-white shadow rounded-lg overflow-x-auto">
+    <div class="bg-white shadow rounded-lg md:overflow-visible overflow-x-auto overflow-y-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
