@@ -20,7 +20,7 @@
 
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-                    Nama Produk
+                    Nama Produk <span class="text-red-600">*</span>
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name') }}"
                        class="w-full px-2 py-1 rounded-md border border-gray-700 shadow-sm @error('name') border-red-500 @enderror">
@@ -42,7 +42,7 @@
 
             <div class="mb-4">
                 <label for="price" class="block text-sm font-medium text-gray-700 mb-1">
-                    Harga
+                    Harga <span class="text-red-600">*</span>
                 </label>
                 <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}"
                        class="w-full px-2 py-1 border rounded-md border-gray-700 shadow-sm @error('price') border-red-500 @enderror">
@@ -53,7 +53,7 @@
 
             <div class="mb-6">
                 <label for="stock" class="block text-sm font-medium text-gray-700 mb-1">
-                    Stok
+                    Stok <span class="text-red-600">*</span>
                 </label>
                 <input type="number" name="stock" id="stock" value="{{ old('stock', 0) }}"
                        class="w-full px-2 py-1 rounded-md border border-gray-700 shadow-sm @error('stock') border-red-500 @enderror">
