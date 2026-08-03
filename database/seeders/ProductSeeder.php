@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $products = $products = [
+        $products = [
             [
                 'name' => 'Beras Premium 5 kg',
                 'description' => 'Beras putih pulen kualitas premium tanpa pemutih buatan, cocok untuk konsumsi harian keluarga.',
